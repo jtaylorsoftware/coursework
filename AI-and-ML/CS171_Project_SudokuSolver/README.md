@@ -1,0 +1,1 @@
+Final project for UCI COMPSCI 171 - Introduction to Artificial Intelligence. I implemented constraint propagation algorithms for forward checking, the minimum remaining values heuristic, least-constraining value heuristic, and the Norvig Sudoku heuristics. These implementations are all in the BTSolver.py file. The rest of the codebase was given as part of the project assignment.

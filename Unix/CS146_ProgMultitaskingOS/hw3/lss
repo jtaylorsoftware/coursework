@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# lss: lists contents or information of the current directory or files,
+#      taking command line arguments compatible with the "ls" command.
+#      If there are no arguments or options, the current directory's contents 
+#      are listed, sorted by decreasing byte count.
+#      Directories are not descended unless files listed within the directory
+#      are given as arguments.
+
+opts="lS" # support "ls -lS" by default
+args=""
+
+# loop over all arguments, parsing and collecting options as we go
+for str in "$@"
+do
+  # Check if the argument is an option starting with "-"; anything
+  # starting with "--" is allowed, but considered to be meant for "ls"
+  # and not "lss" so it is lumped in with args. Also, just like with
+  # "ls", hyphens in the middle of chained options won't be accepted. 
+  if [[ ${#str} -ge 2 ]] && [[ ${str::1} == '-' ]] &&
+    [[ ${str:1:1} != '-' ]] ; then
+    for i in $(seq 1 ${#str})
+    do
+      opts="$opts${str:i:1}"
+    done
+  else
+    args="$args $str"
+  fi
+done
+
+# Assume if there are any arguments, one might be a directory, so
+# use the "d" option to avoid descending them.
+if [[ ${#args} -ne 0 ]] ; then
+  opts="${opts}d"
+fi
+
+# pass the options and args to ls and let it do the work
+exec /usr/bin/ls -$opts $args

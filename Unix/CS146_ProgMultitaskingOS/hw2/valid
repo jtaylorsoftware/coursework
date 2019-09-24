@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# valid: determines if the argument is a valid shell variable name
+
+# ensure at least one argument is supplied
+if [[ $# -eq 0 ]] ; then
+  echo 'valid: supply one argument'
+else 
+  # indicate in stderr that only the first argument is checked
+  if [[ $# -gt 1 ]] ; then
+    >&2 echo 'valid: ignoring extra arguments'
+  fi
+  # pipe the first arg name into grep using echo, and check it for validity using grep
+  # and a regex expression
+  if [[ $(echo $1 | grep -Eo "[_a-zA-Z][_a-zA-Z0-9]*") = $1 ]] ; then
+    echo 'yes'
+  else
+    echo 'no'
+  fi 
+fi

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# nf: prints the number of files in the current directory
+
+# pipe output of ls into wc -l in order to print the number of files
+exec /usr/bin/ls | /usr/bin/wc -l
+
+

@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# srm: safely "removes" files by moving them to a trash folder. If command
+#      line options are given, the builtin "rm" is ran instead. srm expects
+#      a TRASH variable to be defined as a path to a valid directory, but doesn't
+#      require it if command line options are present. 
+#      srm does not keep "versions" of removed files - newly removed files
+#      will overwrite old removed files.
+
+opts=""
+args=""
+for str in "$@"
+do
+  # Check if the argument is an option starting with "-"; anything
+  # starting with "--" is allowed, but considered to be meant for "rm"
+  # and not "srm" so it is lumped in with args. Also, just like with
+  # "rm", hyphens in the middle of chained options won't be accepted. 
+  if [[ ${#str} -ge 2 ]] && [[ ${str::1} == '-' ]] &&
+    [[ ${str:1:1} != '-' ]] ; then
+    for i in $(seq 1 ${#str})
+    do
+      opts="$opts${str:i:1}"
+    done
+  else
+    args="$args $str"
+  fi
+done
+
+if [[ ${#opts} -ne 0 ]] ; then
+  exec /usr/bin/rm -$opts $args # run "rm" if there are options
+else
+  if [[ -z $TRASH ]] ; then
+    >&2 echo "srm: TRASH variable is not set, can't safe remove" # enforce TRASH variable being set
+    exit 1
+  fi 
+  exec /usr/bin/mv $args $TRASH
+fi
+

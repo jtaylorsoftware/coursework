@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# C-interp: when called through a soft link, C-interp will compile and run 
+#           a C file with the same basename as the soft link
+
+# extract the basename of the file to run, which may be C-interp
+# if it's (incorreclty) invoked directly on the command line
+base=`basename "$0"`
+cfile="${base}.c"
+ofile="${base}"
+# check if the basename is this script, which indicates C-interp
+# was called incorrectly without a soft link 
+if [[ "$base" = "C-interp" ]]; then
+  >&2 echo "C-interp: error: script should be called using soft link
+C-interp: usage: \"ln -s C-interp foo\" where \"foo\" is the basename of some C file"
+  exit 1
+fi
+
+# use 'mktemp' to create a temporary directory to work in
+tmpdir=`mktemp --tmpdir=/tmp -d c-interp.XXXXXXXXXX`
+
+
+# use 'trap' to ensure we can remove the temp directory
+trap cleanup 0 1 2 3 15
+
+cleanup(){
+  # remove the temporary directory (redirecting errors into /dev/null to hide 
+  # what the script is doing)
+  rm -rf $tmpdir 2>/dev/null
+}
+
+# compile the c program, outputting the executable into /tmp
+gcc $cfile -o ${tmpdir}/${ofile}
+
+# run the executable
+$tmpdir/$ofile "$@"

@@ -1,0 +1,1 @@
+Technical writing/manual assignment for UCI ICS 139W Critical Writing on Information Technology. We were assigned to create a step by step manual on any topic; I chose to write a tutorial on setting up OpenGL 4.x to render a spinning cube. 

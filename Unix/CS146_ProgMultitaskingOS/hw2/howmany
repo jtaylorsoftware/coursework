@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# howmany: display the number of undergrad students logged in on the machine
+
+# set up the PATH variable so this script can reasonably find the whoson script
+#   if the whoson script isn't in one of the appended dirs then this script can't be run
+oldPath=$PATH
+PATH=$PATH:/bin:/usr/bin:$HOME/bin:.
+
+# pipe the output of the "whoson" script into "wc -w" to count number of words (users)
+exec whoson | wc -w
+
+# restore old path
+PATH=$oldPath

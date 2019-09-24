@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{3a493294-c522-4c2e-a2bb-601d9359875b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenGL">
+      <UniqueIdentifier>{a91b72e1-8dab-4f7c-9590-7f2dac001d10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{bf277252-e435-414e-bf46-e8ad09f27edd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application">
+      <UniqueIdentifier>{98badc3f-f4e0-4b74-99ee-3e1cb4ed2d29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Source Files">
+      <UniqueIdentifier>{26244f72-4a70-47b6-be2c-4f49daf55fc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Header Files">
+      <UniqueIdentifier>{7c4290cb-a17d-428f-addd-fb87738878ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Source Files">
+      <UniqueIdentifier>{d71c92a7-a273-4da0-92fc-991f0d5da596}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Header Files">
+      <UniqueIdentifier>{d07de0d9-2a23-4b4d-8a88-e003ff633c0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenGL\Source Files">
+      <UniqueIdentifier>{1c9edd7b-f585-431d-81e3-3f5b2ad69b96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenGL\Header Files">
+      <UniqueIdentifier>{1091f8aa-a122-4a36-be32-fa0bd175ac12}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\application\application.hpp">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\engine\euler_camera.hpp">
+      <Filter>Engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\engine\light.hpp">
+      <Filter>Engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\engine\light_manager.hpp">
+      <Filter>Engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\engine\material.hpp">
+      <Filter>Engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\engine\mesh.hpp">
+      <Filter>Engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\engine\renderer.hpp">
+      <Filter>Engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\engine\timer.hpp">
+      <Filter>Engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\engine\window.hpp">
+      <Filter>Engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\opengl\buffer.hpp">
+      <Filter>OpenGL\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\opengl\element_buffer.hpp">
+      <Filter>OpenGL\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\opengl\shader.hpp">
+      <Filter>OpenGL\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\opengl\shader_program.hpp">
+      <Filter>OpenGL\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\opengl\texture.hpp">
+      <Filter>OpenGL\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\opengl\texture2d.hpp">
+      <Filter>OpenGL\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\opengl\vertex_array.hpp">
+      <Filter>OpenGL\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\opengl\vertex_buffer.hpp">
+      <Filter>OpenGL\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utility\assimp_model_loader.hpp">
+      <Filter>Utility\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utility\model_loader.hpp">
+      <Filter>Utility\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utility\model_types.hpp">
+      <Filter>Utility\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utility\utility.hpp">
+      <Filter>Utility\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\engine\world_object.hpp">
+      <Filter>Engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utility\image_utility.hpp">
+      <Filter>Utility\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\engine\model.hpp">
+      <Filter>Engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\engine\model_library.hpp">
+      <Filter>Engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\engine\texture_library.hpp">
+      <Filter>Engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\engine\mesh_renderer.hpp">
+      <Filter>Engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\opengl\cubemap.hpp">
+      <Filter>OpenGL\Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\application\application.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\application\main.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\light_manager.cpp">
+      <Filter>Engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\material.cpp">
+      <Filter>Engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\mesh.cpp">
+      <Filter>Engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\renderer.cpp">
+      <Filter>Engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\window.cpp">
+      <Filter>Engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\opengl\buffer.cpp">
+      <Filter>OpenGL\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\opengl\element_buffer.cpp">
+      <Filter>OpenGL\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\opengl\shader.cpp">
+      <Filter>OpenGL\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\opengl\shader_program.cpp">
+      <Filter>OpenGL\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\opengl\texture.cpp">
+      <Filter>OpenGL\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\opengl\texture2d.cpp">
+      <Filter>OpenGL\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\opengl\vertex_array.cpp">
+      <Filter>OpenGL\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\opengl\vertex_buffer.cpp">
+      <Filter>OpenGL\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\utility\assimp_model_loader.cpp">
+      <Filter>Utility\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\utility\model_loader.cpp">
+      <Filter>Utility\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\utility\utility.cpp">
+      <Filter>Utility\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\libs\glad\src\glad.c">
+      <Filter>OpenGL\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\world_object.cpp">
+      <Filter>Engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\utility\image_utility.cpp">
+      <Filter>Utility\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\model.cpp">
+      <Filter>Engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\model_library.cpp">
+      <Filter>Engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\texture_library.cpp">
+      <Filter>Engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\mesh_renderer.cpp">
+      <Filter>Engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\opengl\cubemap.cpp">
+      <Filter>OpenGL\Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

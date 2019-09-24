@@ -1,0 +1,1 @@
+Collection of Bash scripts and C programs written for the UCI COMPSCI 146 Programming in Multitasking Operating Systems class. The C programs are written using C99 and the C POSIX library. Every script or program file includes documentation on usage at the top of each file.

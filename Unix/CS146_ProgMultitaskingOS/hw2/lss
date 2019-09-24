@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# lss: lists all the files in the current directory in order of decreasing size
+
+# use ls with options l and S to display files ordered by size
+exec /usr/bin/ls -lS

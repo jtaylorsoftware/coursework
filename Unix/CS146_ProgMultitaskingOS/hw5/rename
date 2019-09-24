@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# rename: renames files using sed substitution commands
+# 
+# usage: rename [-f] sed-substitution-command file1 file2 ...
+# 
+# rename will refuse to over-write existing files unless the -f flag 
+# is present.
+
+
+# extract force option if present
+force=""
+for ((i=1;i<=$#;i++)); do
+  if [[ ${!i} =~ ^-(.*)$ ]]; then # check for options using regex
+    opt=${BASH_REMATCH[1]} # option letter or word
+    if [[ $opt =~ ^[fF]$ ]]; then
+      if [[ $i -eq 1 ]]; then
+        force=-f
+      else
+	    # refuse options that don't appear first
+        >&2 echo rename: force option must appear before substitution argument
+        exit 1  
+      fi
+    else
+	  # refuse options that aren't -f 
+      >&2 echo rename: invalid option -- \"${!i}\"
+      exit 1  
+    fi 
+  fi
+done
+
+# extract sed substitution command
+if [[ ! -z $force ]]; then
+  shift 1 # shift arguments if force was present
+fi
+sub=$1 # substitution command
+shift 1 # shift arguments over so only iterate over files
+
+# rename files by using sed and awk to create shell commands
+for arg in "$@"; do
+  src="$(basename $arg)" # the filename only of the file argument
+  dir="$(dirname $arg)"  # the directory only of the file argument
+  echo $(basename $arg) | sed "s${sub}" | awk -v src=\"$src\" -v dir=\"$dir\" -v force=$force '{
+  printf \
+"if [[ -f %1$s/%3$s && -z \"%4$s\" ]]; then\n \
+  >&2 echo rename: destination file %3$s exists, ignoring\n\
+else\n\
+  mv %4$s %1$s/%2$s %1$s/%3$s &>/dev/null \n\
+fi\n",dir,src,$1,force
+  }' | sh
+done

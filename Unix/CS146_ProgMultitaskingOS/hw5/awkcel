@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# awkcel: front-end to awk(1) that allows named columns to be acccessed as variables
+#         for tab-separated files.
+#
+# usage: awkcel {any standard awk program} filename
+# 
+# The awk program for awkcel can be any valid awk program, with the addition of 
+# variables that are named after column headers in the .tsv file. The .tsv file
+# must have a constant number of tab-separated columns. The first non-comment line
+# is the header, which "defines" the variable names used in the awk program. 
+# These variable names can be used to access values in each column per line.
+# Everyl ine of the .tsv file should have the same number of columns as the 
+# header, with no empty columns. 
+
+
+# use awk to get the header (assumed to be the first non-comment line)
+header=$(awk -F $'\t' '/^[^#].*$/ {
+  print; exit
+}' $2 )
+vars=""
+
+# loop through the names in the header, validating the names and creating
+# variables for awk
+i=1
+for varName in $(echo $header | cut -f1); do
+  if [[ $varName =~ ^[_a-zA-Z]+[_a-zA-Z0-9]*$ ]]; then
+    vars="$vars $varName=\$$i;"
+  else
+    # refuse header/column names that aren't valid awk variable names
+    >&2 echo awkcel: \"$varName\" -- invalid header field name
+    exit
+  fi
+  ((i++))
+done
+
+# conditional to skip the header line in case it would cause an error while reading
+isHeader="\$0 == \"${header}\""
+# setup commands to make "awkcel" programs able to run 
+awkCmd="/^[#].*$/ {next} /^[^#].*$/ && $isHeader{next} {${vars}} "
+# concatenate the awkcel program onto the setup commands
+awkCmd="${awkCmd} $1"
+
+# run awkcel on the given file
+awk -F $'\t' "$awkCmd" $2

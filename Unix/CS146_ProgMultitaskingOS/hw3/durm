@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# durm: lists the sizes of the safe-remove trash directory ($TRASH) and its contents.
+
+if [[ -z $TRASH ]] ; then
+  >&2 echo "durm: TRASH variable is not set, can't du trash" # enforce trash variable being set
+  exit 1
+fi 
+
+exec /usr/bin/du $TRASH

@@ -1,0 +1,1 @@
+UCI COMPSCI 116 assignment to implement feature detection using numpy, scipy, and skimage.

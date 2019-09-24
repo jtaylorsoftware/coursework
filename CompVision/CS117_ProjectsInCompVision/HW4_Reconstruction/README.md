@@ -1,0 +1,1 @@
+Assignment from UCI COMPSCI 117 Projects in Computer Vision. I reconstructed a simple mesh in matlab using images of an object scanned with structured light.

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# cx: executes the command "chmod +x" on every supplied file
+
+# check if arguments are supplied
+if [[ $# -ne 0 ]] ; then
+  # run chmod if arguments are given
+  exec /usr/bin/chmod +x "$@"
+else
+  # print an error if there are no files given
+  echo 'cx: missing filename arguments'
+fi
+

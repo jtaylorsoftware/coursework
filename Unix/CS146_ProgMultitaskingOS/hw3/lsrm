@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# lsrm: lists all the files residing in the safe-remove trash directory ($TRASH).
+
+if [[ -z $TRASH ]] ; then
+  >&2 echo "lsrm: TRASH variable is not set, can't list trash" # enforce trash variable being set
+  exit 1
+fi 
+
+exec /usr/bin/ls -l $TRASH

@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# unrm: restores safe-removed ("srm") files that are given as 
+#       arguments. Files are restored to the directory where
+#       unrm was called.
+
+if [[ -z $TRASH ]] ; then
+  >&2 echo "unrm: TRASH variable is not set, can't unremove" # enforce trash variable being set
+  exit 1
+fi 
+
+args=""
+for str in "$@"
+do
+  # Ignore any options given and collect filename arguments. Filenames are prepended
+  # with the TRASH path so "mv" can find them.
+  if [[ ${str::1} != '-' ]] ; then
+    args="$args $TRASH/$str"
+  fi
+done
+
+# As a sanity check, handle missing arguments here instead of causing "mv" to fail.
+if [[ -z $args ]] ; then
+  >&2 echo "unrm: missing filename or directory arguments to unremove"
+  exit 1
+fi 
+
+# Also handle an empty trash folder by printing an error and quitting.
+if [[ -z "$(/usr/bin/ls -A $TRASH)" ]] ; then
+  >&2 echo "unrm: trash is empty, nothing to unremove"
+  exit 1
+fi
+
+exec /usr/bin/mv $args .

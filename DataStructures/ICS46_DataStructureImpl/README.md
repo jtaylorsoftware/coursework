@@ -1,0 +1,1 @@
+Collection of data structures that I implemented for ICS 46 Data Structure Implementation and Analysis. The interfaces of the data structures were given; I had to create the implementations as homework assignments.

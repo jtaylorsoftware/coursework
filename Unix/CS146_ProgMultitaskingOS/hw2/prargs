@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# prargs: prints a numbered list of the arguments passed to it
+
+# print argument 0 ( the name of the script )
+echo "0: \"$0\""
+
+# keep count of args
+i=1
+
+# loop over all arguments, printing its position in the arg list
+# and the name of the arg
+for arg in "$@"
+do
+  echo "$i: \"$arg\""
+  i=$((i+1))
+done
+

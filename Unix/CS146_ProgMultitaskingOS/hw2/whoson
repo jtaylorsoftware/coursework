@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# whoson: display a sorted list of undergrad students logged in on current machine
+
+# keep a string of all ugrad users
+ugrads=""
+
+# loop over all logged on users, adding user to ugrads if the user is in the group
+for user in $(exec /usr/bin/users)
+do
+  # pipe output of "groups $user" into "grep -o 'ugrad'" to get a string
+  # containing "ugrad" only if the user is in the ugrad group
+  if [[ $(exec groups $user 2>/dev/null | grep -o 'ugrad' ) = "ugrad" ]] ; then
+    ugrads="$ugrads $user"
+  fi 
+done
+
+# output the list of ugrad users
+echo $ugrads

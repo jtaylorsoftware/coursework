@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# trash: removes all files that have been safely removed by the "srm" command. After 
+#        running "trash" all files in $TRASH will be removed from disk.
+
+if [[ -z $TRASH ]] ; then
+  >&2 echo "trash: TRASH variable is not set, can't empty trash" # enforce trash variable being set
+  exit 1
+fi 
+
+exec /usr/bin/rm -rf $TRASH/*
