@@ -25,13 +25,6 @@ OpenGL Loader-Generator: http://glad.dav1d.de/
 OpenGL Mathematics: https://glm.g-truc.net/0.9.9/index.html
 STB (Image functions): https://github.com/nothings/stb
 
-The version of this code uploaded to EEE has some asset files removed (mainly
-.fbx files) and resized (some image textures) to reduce the file size so it is 
-under the 100MB limit. 
-In the Google Drive folder the assets folder, with original asset files, is 
-included in case the .model files don't load for some reason or you want
-original texture sizes.
-
 If you want to modify the code to load your own assets, the best way to do so
 is to import a model into Autodesk Maya, and use a Phong shader as the material.
 The setup for base color and normal maps (use as tangent space normals) should be 
